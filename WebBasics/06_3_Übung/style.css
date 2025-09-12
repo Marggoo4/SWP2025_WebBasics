@@ -1,0 +1,59 @@
+.main-container {
+    position: relative;
+    margin: 40px;
+    width: 400px;
+    height: 400px;
+}
+
+.coral-container {
+    position: relative;
+    height: 300px;
+    width: 400px;
+    display: flex;
+}
+
+.box1 {
+    height: 300px;
+    width: 200px;
+    background-color: lightgreen;
+}
+
+.box2 {
+    height: 300px;
+    width: 200px;
+    background-color: lightblue;
+}
+
+.cornerbox {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    background-color: black;
+    right: 0px;
+    top: 0px;
+}
+
+
+.bottom-box {
+    width: 400px;
+    height: 100px;
+    background-color: coral;
+}
+
+.bottom-left-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 250px;
+    height: 250px;
+    background-color: lightgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.centered-box {
+    width: 125px;
+    height: 125px;
+    background-color: coral;
+}
