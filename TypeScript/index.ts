@@ -41,6 +41,9 @@ const cars: Car[] = [
 ];
 
 
+
+// for each
+
 function getTotalPrice(cars: Car[]): number {
     let total = 0;
     cars.forEach(car => {
@@ -49,9 +52,60 @@ function getTotalPrice(cars: Car[]): number {
     return total;
 }
 
-function printCars(cars: Car[]): void
+function printCars(cars: Car[]): void {
+  const sorted = cars.sort((a,b) => b.price - a.price);
+  cars.forEach(car => {
+    console.log(`${car.brand} ${car.model} (${car.year}) - $${car.price}`);
+  });
+}
 
-function getExpensiveCars(cars: Car[], minPrice: number): Car [] 
+
+function getExpensiveCars(cars: Car[], minPrice: number): Car[] {
+  const result: Car[] = [];
+  cars.forEach(car => {
+    if (car.price > minPrice) {
+      result.push(car);
+    }
+  });
+  return result;
+}
+
+
+
+// array-function
+
+function getTotalPriceReduce(cars: Car[]): number {
+  return cars.reduce((sum, car) => sum + car.price, 0);
+}
+
+
+function printCarsMap(cars: Car[]): void {
+  cars.map(car => `${car.brand} ${car.model} (${car.year}) - $${car.price}`)
+      .forEach(line => console.log(line));
+}
+
+
+function getExpensiveCarsFilter(cars: Car[], minPrice: number): Car[] {
+  return cars.filter(car => car.price > minPrice);
+}
+
+
+
+console.log("Total Price:", getTotalPrice(cars));
+
+console.log("\nCars sorted:");
+printCars(cars);
+
+console.log("\nExpensive Cars over $30,000:", getExpensiveCars(cars, 30000));
+
+
+
+console.log("\nTotal Price (reduce):", getTotalPriceReduce(cars));
+
+console.log("\nCars sorted (map):");
+printCarsMap(cars);
+
+console.log("\nExpensive Cars over $30,000:", getExpensiveCarsFilter(cars, 30000));
 
 
 /*
