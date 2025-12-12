@@ -1,9 +1,15 @@
 import React from 'react'
 
-type Props = {}
+type Props = {
+  title: string;
+  description: string;
+}
 
-export default function Card({}: Props) {
+export default function Card({title, description}: Props) {
   return (
-    <div>I am a Card</div>
+    <div className="border bg-green-400">
+      <h2>{title}</h2>
+      <p>{description}</p>
+      </div>
   )
 }
