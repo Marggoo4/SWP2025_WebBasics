@@ -9,11 +9,8 @@ export class Rectangle {
         ctx.fillStyle = "#66aaff";
         ctx.fillRect(this.x, this.y, this.width, this.height);
     }
-    move(delta) {
-        this.x += delta * 100; // Move 100 pixels per second
-        this.y += delta * 100; // Move 100 pixels per second
-    }
-    sayHello() {
-        console.log("Hello from Rectangle!");
+    update(deltaTime) {
+        this.x += deltaTime * 100;
+        this.y += deltaTime * 100;
     }
 }

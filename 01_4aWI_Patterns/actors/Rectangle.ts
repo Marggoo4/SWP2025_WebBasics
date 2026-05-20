@@ -1,4 +1,5 @@
 import { Actor } from "./Actor.js";
+
 export class Rectangle implements Actor {
   constructor(
     public x: number,
@@ -12,12 +13,8 @@ export class Rectangle implements Actor {
     ctx.fillRect(this.x, this.y, this.width, this.height);
   }
 
-  move(delta: number): void {
-    this.x += delta * 100; // Move 100 pixels per second
-    this.y += delta * 100; // Move 100 pixels per second
-  }
-
-  sayHello(): void {
-    console.log("Hello from Rectangle!");
+  update(deltaTime: number): void {
+    this.x += deltaTime * 100;
+    this.y += deltaTime * 100;
   }
 }

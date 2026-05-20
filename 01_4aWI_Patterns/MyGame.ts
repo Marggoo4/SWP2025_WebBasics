@@ -1,31 +1,38 @@
-// MyGame - Example implementation of Game interface
 import { Game, GameFramework } from "./GameFramework.js";
-import { Rectangle } from "./actors/Rectangle.js";
 import { Circle } from "./actors/Circle.js";
-import { Actor } from "./actors/Actor.js";
-import { SuperCircle } from "./actors/SuperCircle.js";
+import { RightMovement } from "./movements/RightMovement.js";
+import { LeftMovement } from "./movements/LeftMovement.js";
+import { UpMovement } from "./movements/UpMovement.js";
+import { DownMovement } from "./movements/DownMovement.js";
 
 class MyGame extends Game {
-  private rect1: Rectangle | null = null;
+  private circles: Circle[] = [];
 
   init(): void {
-    console.log("Game initialized");
-    this.rect1 = new Rectangle(100, 100, 50, 50);
+    const c1 = new Circle(400, 100, 20);
+    c1.setMovement(new RightMovement(400, 100, 120));
+
+    const c2 = new Circle(400, 200, 20);
+    c2.setMovement(new LeftMovement(400, 200, 120));
+
+    const c3 = new Circle(100, 300, 20);
+    c3.setMovement(new DownMovement(100, 300, 120));
+
+    const c4 = new Circle(700, 300, 20);
+    c4.setMovement(new UpMovement(700, 300, 120));
+
+    this.circles = [c1, c2, c3, c4];
   }
 
   update(deltaTime: number): void {
-    console.log("update:", deltaTime);
-    this.rect1?.update(deltaTime);
+    for (const c of this.circles) c.update(deltaTime);
   }
 
   render(ctx: CanvasRenderingContext2D): void {
-    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    ctx.fillStyle = "blue";
-    ctx.fillRect(this.x, this.y, 50, 50);
+    for (const c of this.circles) c.render(ctx);
   }
 }
 
 const game = new MyGame();
 const framework = new GameFramework(game, 800, 600);
 framework.start();
-console.log("test");
