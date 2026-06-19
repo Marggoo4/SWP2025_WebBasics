@@ -1,5 +1,5 @@
 import { Game, GameFramework } from "./GameFramework.js";
-import { Circle } from "./actors/Circle.js";
+import { ActorFactory } from "./actors/ActorFactory.js";
 import { RightMovement } from "./movements/RightMovement.js";
 import { LeftMovement } from "./movements/LeftMovement.js";
 import { UpMovement } from "./movements/UpMovement.js";
@@ -11,16 +11,17 @@ class MyGame extends Game {
         this.circles = [];
     }
     init() {
-        const c1 = new Circle(400, 100, 20);
+        // Actors are created centrally by the factory instead of calling "new Circle".
+        const c1 = ActorFactory.createActor("circle", 400, 100);
         c1.setMovement(new RightMovement(400, 100, 120));
 
-        const c2 = new Circle(400, 200, 20);
+        const c2 = ActorFactory.createActor("circle", 400, 200);
         c2.setMovement(new LeftMovement(400, 200, 120));
 
-        const c3 = new Circle(100, 300, 20);
+        const c3 = ActorFactory.createActor("circle", 100, 300);
         c3.setMovement(new DownMovement(100, 300, 120));
 
-        const c4 = new Circle(700, 300, 20);
+        const c4 = ActorFactory.createActor("circle", 700, 300);
         c4.setMovement(new UpMovement(700, 300, 120));
 
         this.circles = [c1, c2, c3, c4];
