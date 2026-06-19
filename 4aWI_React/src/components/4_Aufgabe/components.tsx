@@ -32,6 +32,7 @@ export function Card({ title, description, image }: CardProps) {
           image ??
           "https://via.placeholder.com/400x300?text=Profile+Image"
         }
+        alt={title}
         className="w-full"
       />
 
