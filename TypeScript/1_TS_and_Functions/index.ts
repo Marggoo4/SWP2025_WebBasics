@@ -53,8 +53,9 @@ function getTotalPrice(cars: Car[]): number {
 }
 
 function printCars(cars: Car[]): void {
-  const sorted = cars.sort((a,b) => b.price - a.price);
-  cars.forEach(car => {
+  // Sort a copy so the caller's array is not mutated as a side effect.
+  const sorted = [...cars].sort((a, b) => b.price - a.price);
+  sorted.forEach(car => {
     console.log(`${car.brand} ${car.model} (${car.year}) - $${car.price}`);
   });
 }
